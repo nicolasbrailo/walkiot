@@ -86,12 +86,12 @@ class KeySound(object):
             return self._music_keys()
 
     def on_key_press(self, pin):
-        pinmap = self._active_pin_map()
-        if isinstance(pinmap, (list,)):
-            for snd in pinmap:
+        pinsnd = self._active_pin_map()[pin]
+        if isinstance(pinsnd, (list,)):
+            for snd in pinsnd:
                 sync_play_sound(snd)
         else:
-            sync_play_sound(pinmap)
+            sync_play_sound(pinsnd)
 
 foo = KeySound()
 while True:
